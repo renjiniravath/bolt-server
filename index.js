@@ -8,7 +8,7 @@ const io = require('socket.io')(server, {
 const chatServer = require('./socket');
 
 app.get('/', (req, res) => {
-    res.send('The server is up and running!');
+    res.send(`The server is up and running in ${process.env.MODE}!`);
 });
 
 chatServer.startChatServer(io);
@@ -18,6 +18,4 @@ if (port == null || port == "") {
   port = 8080;
 }
 
-server.listen(port, () => {
-    console.log('Listening on *:8080');
-});
+server.listen(port);
