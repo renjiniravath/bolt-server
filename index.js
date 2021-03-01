@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
 });
 
 chatServer.startChatServer(io);
-server.listen(8080, () => {
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
+
+server.listen(port, () => {
     console.log('Listening on *:8080');
-  });
+});
